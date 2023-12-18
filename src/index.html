@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery</title>
+  <link rel="icon" href="./images/artify-favicon-white.png" type="image/png">
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <div class="page-container">
+
+    <div class="nav"></div>
+
+    <nav>
+      <div class="logo">
+        <img src="./images/artify-high-resolution-logo-white.png" alt="logo">
+      </div>
+      <ul>
+        <li><a href="#" class="nav-link" data-query="Modern Art">Modern</a></li>
+        <li><a href="#" class="nav-link" data-query="Timeless Art">Timeless</a></li>
+        <li><a href="#" class="nav-link" data-query="Sculpted Art">Sculpted</a></li>
+        <li><a href="#" class="nav-link" data-query="Abstract Expressions">Abstract</a></li>
+        <li><a href="#" class="nav-link" data-query="Natural Art">Natural</a></li>
+        <li><a href="#" class="nav-link" data-query="Cityscape Art">Cityscape</a></li>
+        <li><a href="#" class="nav-link" data-query="Digital Art">Digital</a></li>
+        <li><a href="#" class="nav-link" data-query="Simplicity Art">Simplicity</a></li>
+        <li><a href="#" class="nav-link" data-query="Vivid Art">Vivid</a></li>
+        <li>
+          <a href="./index.html">Home</a>
+        </li>
+        <li><a href="./favorites.html">Favorites ❤</a></li>
+      </ul>
+    </nav>
+    <div id="main" class="gallery">
+      <!-- Gallery items will be dynamically added here -->
+    </div>
+    <div class="pagination">
+      <button id="prevPage">Previous</button>
+      <button id="nextPage">Next</button>
+    </div>
+    <div class="footer">
+      Challenge by <a href="https://www.knowledgehut.com/" target="_blank">KnowledgeHut</a>. Coded by <a
+        href="https://www.linkedin.com/in/rohitbose/" target="_blank">Rohit Bose</a>.
+    </div>
+  </div>
+  </div>
+  <script>
+    const toggleFavorite = (button) => {
+      const photoId = button.dataset.photoId;
+      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+      const isFavorite = favorites.includes(photoId);
+      if (isFavorite) {
+        favorites = favorites.filter((id) => id !== photoId);
+      } else {
+        favorites.push(photoId);
+      }
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+      button.classList.toggle("favorited", !isFavorite);
+      const heartIcon = button.querySelector(".heart-icon");
+      heartIcon.src = isFavorite
+        ? "./images/empty-heart-icon.png"
+        : "./images/filled-heart-icon.png";
+    };
+  </script>
+  <script type="module" src="./js/index.js"></script>
+</body>
+
+</html>

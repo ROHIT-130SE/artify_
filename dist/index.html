@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery</title>
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAGFBMVEVMaXH////////////////////////////eQubUAAAAB3RSTlMAI8mDUuemjgeXlwAAAAlwSFlzAAAD6AAAA+gBtXtSawAAAfpJREFUeJzt2llywzAIBmAjtvvfuAfQigJoOsP/3Aj8yQtx832VSqVSqVQqlcpVpHXBLzGkg0BiAzJqIJEARvWVHwNoHgGM6+cRyKSBLAKY1c8iwGkDSQSsbwlwXl+V3gJoBgGt6mcQ8LqB9hhAwwnaroH2GECDCdq+gZZ8F+ZUAumqCWYSQA8AXyaB9ACjW7MkAtCEJSY43u6hSx7Al0eAY4A8Ah4DpBHg/OGfQ8DzCTCFgOYAo0eE/3jaVjUonoDWJeIJ2vo8CyegXYFogrYG2Jyjvwf2wour1CGynzpCCUAPho5IAtkDLG/VKQBf4GyGZ8cWRgCHuwtRBHh6ZFEEfAZwfK44vBGBX64Wc/gUIIiAzgFiCJpl3gsgIAtABEGzrehOQNYFjQ1vY17PeTYDu6jppN1G7DdXVwKwA/gSiB3AlQD0aspiNwK8OxY/Au53AE+iTgSofoGAF/Om4GMAvSFg1wYw4sW8JRzxYj6UgFTfEjTvBowE4F7fSCD+DZgIIKC+iUAiGjCMpxBS30CAMQ0cE0D/UQF77id09Hmcmr9TuM9UtwToA3BPwNd750NA11vntBS7AdytRX4Aw9OJ7PvG1/VvLihS13fO9iuquQLYCcAXwE4gZrKL54rfn/sTUP9r3V//+wb9khm/eKtUKpVKpVKp/KP8AQorZKMgmKx0AAAAAElFTkSuQmCC" type="image/png">
+  
+  <script type="module" crossorigin src="/assets/index.e31b7f39.js"></script>
+  <link rel="stylesheet" href="/assets/index.e5409bdb.css">
+</head>
+
+<body>
+  <div class="page-container">
+
+    <div class="nav"></div>
+
+    <nav>
+      <div class="logo">
+        <img src="/assets/artify-high-resolution-logo-white.5370a5c4.png" alt="logo">
+      </div>
+      <ul>
+        <li><a href="#" class="nav-link" data-query="Modern Art">Modern</a></li>
+        <li><a href="#" class="nav-link" data-query="Timeless Art">Timeless</a></li>
+        <li><a href="#" class="nav-link" data-query="Sculpted Art">Sculpted</a></li>
+        <li><a href="#" class="nav-link" data-query="Abstract Expressions">Abstract</a></li>
+        <li><a href="#" class="nav-link" data-query="Natural Art">Natural</a></li>
+        <li><a href="#" class="nav-link" data-query="Cityscape Art">Cityscape</a></li>
+        <li><a href="#" class="nav-link" data-query="Digital Art">Digital</a></li>
+        <li><a href="#" class="nav-link" data-query="Simplicity Art">Simplicity</a></li>
+        <li><a href="#" class="nav-link" data-query="Vivid Art">Vivid</a></li>
+        <li>
+          <a href="./index.html">Home</a>
+        </li>
+        <li><a href="./favorites.html">Favorites ❤</a></li>
+      </ul>
+    </nav>
+    <div id="main" class="gallery">
+      <!-- Gallery items will be dynamically added here -->
+    </div>
+    <div class="pagination">
+      <button id="prevPage">Previous</button>
+      <button id="nextPage">Next</button>
+    </div>
+    <div class="footer">
+      Challenge by <a href="https://www.knowledgehut.com/" target="_blank">KnowledgeHut</a>. Coded by <a
+        href="https://www.linkedin.com/in/rohitbose/" target="_blank">Rohit Bose</a>.
+    </div>
+  </div>
+  </div>
+  <script>
+    const toggleFavorite = (button) => {
+      const photoId = button.dataset.photoId;
+      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+      const isFavorite = favorites.includes(photoId);
+      if (isFavorite) {
+        favorites = favorites.filter((id) => id !== photoId);
+      } else {
+        favorites.push(photoId);
+      }
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+      button.classList.toggle("favorited", !isFavorite);
+      const heartIcon = button.querySelector(".heart-icon");
+      heartIcon.src = isFavorite
+        ? "./images/empty-heart-icon.png"
+        : "./images/filled-heart-icon.png";
+    };
+  </script>
+  
+</body>
+
+</html>
